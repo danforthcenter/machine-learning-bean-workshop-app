@@ -10,6 +10,7 @@ import io
 # Title the app 
 st.title("Bean/Seed Analyzer")
 
+# Clear old output 
 pcv.outputs.clear()
 
 # User file uploader 
@@ -70,20 +71,20 @@ for uploaded_file in uploaded_files:
                                   label=img_name)
     # Optional, plot the color trait histograms
     st.altair_chart(color_img)
-    
-    csv_filename = f"{img_name}_csv.csv"
-    pcv.outputs.save_results(csv_filename, "csv")
-    pcv.outputs.clear()
-    # Read CSV back in to allow download 
-    csv_data = pd.read_csv(csv_filename)
-    # Download button to save output data 
-    st.download_button(
-    label="Download data as CSV", # The text on the button
-    data=csv_data.to_csv().encode("utf-8"), # The data to be downloaded
-    file_name=csv_filename, # Suggested file name
-    mime='text/csv', # MIME type for CSV files
-    # Use an icon (optional)
-    icon=":material/download:", 
+
+csv_filename = "plantcv-size-color-data.csv"
+pcv.outputs.save_results(csv_filename, "csv")
+pcv.outputs.clear()
+# Read CSV back in to allow download 
+csv_data = pd.read_csv(csv_filename)
+# Download button to save output data 
+st.download_button(
+label="Download data as CSV", # The text on the button
+data=csv_data.to_csv().encode("utf-8"), # The data to be downloaded
+file_name=csv_filename, # Suggested file name
+mime='text/csv', # MIME type for CSV files
+# Use an icon (optional)
+icon=":material/download:", 
 )
 
 
