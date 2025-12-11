@@ -9,7 +9,7 @@ import io
 
 # Title the app 
 st.title("PhenoBean")
-st.subtitle("Bean image analysis app")
+st.subheader("Image analysis app for images of beans/seeds", divider=True)
 # Clear old output 
 pcv.outputs.clear()
 
