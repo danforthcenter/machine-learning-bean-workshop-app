@@ -8,8 +8,8 @@ import cv2
 import io
 
 # Title the app 
-st.title("Bean/Seed Analyzer")
-
+st.title("PhenoBean")
+st.subtitle("Bean image analysis app")
 # Clear old output 
 pcv.outputs.clear()
 
