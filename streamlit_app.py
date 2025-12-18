@@ -1,5 +1,6 @@
 # Import libraries
 from plantcv import plantcv as pcv
+from skimage.color import label2rgb
 import streamlit as st
 from PIL import Image 
 import pandas as pd
@@ -54,8 +55,11 @@ for uploaded_file in uploaded_files:
     
     # Create labeled mask
     labeled_mask, num = pcv.create_labels(mask=clean_mask)
+    # Make a colorful version of the labeled mask
+    colorful = label2rgb(labeled_mask)
+    colorful2 = (255*colorful).astype(np.uint8)
     # Optional intermediate outputs plotted
-    st.image(labeled_mask)
+    st.image(colorful2)
     
     # Extract seed shape and color traits
     pcv.params.text_size = 1.5
