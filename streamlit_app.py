@@ -54,6 +54,8 @@ for uploaded_file in uploaded_files:
     
     # Create labeled mask
     labeled_mask, num = pcv.create_labels(mask=clean_mask)
+    # Optional intermediate outputs plotted
+    st.image(labeled_mask)
     
     # Extract seed shape and color traits
     pcv.params.text_size = 1.5
